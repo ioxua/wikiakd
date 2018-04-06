@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:html": "pug src/pug -o dist -W"
+    "dev:html": "pug src/pug -o dist -W",
+    "dev:css": "node-sass src/sass -ro dist -W"
   },
   "author": "Yehoshua Oliveira (yehoshua.silva@fatec.sp.gov.br)",
   "license": "MIT",
   "dependencies": {
+    "node-sass": "^4.8.3",
     "pug-cli": "^1.0.0-alpha6",
     "semantic-ui": "^2.3.1"
   }
