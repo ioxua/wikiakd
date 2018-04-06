@@ -1,0 +1,11 @@
+{
+  "name": "wikiakd",
+  "version": "1.0.0",
+  "description": "Um pequeno projeto para o professor Elias",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yehoshua Oliveira (yehoshua.silva@fatec.sp.gov.br)",
+  "license": "MIT"
+}
