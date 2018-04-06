@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:html": "pug src/pug -o dist -W",
-    "dev:css": "node-sass src/sass -ro dist -W"
+    "dev:css": "node-sass src/sass -ro dist -W",
+    "dev:semantic": "gulp -f lib/semantic/gulpfile.js build"
   },
   "author": "Yehoshua Oliveira (yehoshua.silva@fatec.sp.gov.br)",
   "license": "MIT",
@@ -14,5 +15,8 @@
     "node-sass": "^4.8.3",
     "pug-cli": "^1.0.0-alpha6",
     "semantic-ui": "^2.3.1"
+  },
+  "devDependencies": {
+    "gulp-cli": "^2.0.1"
   }
 }

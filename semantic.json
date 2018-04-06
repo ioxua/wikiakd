@@ -8,10 +8,10 @@
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "dist/lib/semantic/",
-      "uncompressed": "dist/lib/semantic/components/",
-      "compressed": "dist/lib/semantic/components/",
-      "themes": "dist/lib/semantic/themes/"
+      "packaged": "../../dist/lib/semantic/",
+      "uncompressed": "../../dist/lib/semantic/components/",
+      "compressed": "../../dist/lib/semantic/components/",
+      "themes": "../../dist/lib/semantic/themes/"
     },
     "clean": "dist/"
   },
