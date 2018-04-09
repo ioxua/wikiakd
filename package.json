@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:html": "pug src/pug -o dist -W",
+    "dev:html": "pug src/pug/[!_]*.pug -o dist -w",
     "dev:css": "node-sass src/sass -ro dist -W",
     "dev:semantic": "gulp -f lib/semantic/gulpfile.js build"
   },
