@@ -1,10 +1,22 @@
 doctype html 
 html
 	head
+		// https://gist.github.com/nunosans/3028849
+		meta(charset="utf-8")
+		meta(http-equiv="x-ua-compatible" content="ie=edge; chrome=1")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+
 		title Hello world
 		block stylesheets
+			link(rel="stylesheet", href="lib/semantic/semantic.min.css")
+			link(rel="stylesheet", href="style.css")
+			link(rel="stylesheet", href="menu.css")
 
 	body
 		block content
 		// maybe create the footer here?
 		block scripts
+			script(
+				src="https://code.jquery.com/jquery-3.3.1.min.js",
+				integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=",
+				crossorigin="anonymous")

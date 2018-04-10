@@ -1,4 +1,35 @@
 extend _template
 
 block content
-	h1 Hello world!
+	.pusher 
+		.ui.masthead.inverted.center.aligned.segment.gradient.vanusa
+			.ui.container
+				.ui.large.secondary.inverted.menu.mastmenu
+					.item.serif 
+						img(src="../assets/images/wiki-v1.png", alt="WikiAcad logotipo")
+					a.item Revista
+					a.item Videoteca
+
+					.right.menu
+						.link.item
+							.text Entrar
+							i.arrow.right.icon
+			.ui.text.container.mastsearch
+				.ui.icon.inverted.huge.transparent.fluid.input
+					input(placeholder="Procure um artigo...")
+					i.search.icon
+append scripts
+	script.
+		$(() => {
+			const changeClassOnClick = function() {
+				if($(this).val() != "" || $(this).is(":focus"))
+					$(".ui.input").addClass("dirty")
+				else
+					$(".ui.input").removeClass("dirty")
+			}
+
+			$(".ui.input input").keyup(changeClassOnClick)
+			$(".ui.input input").focus(changeClassOnClick)
+			$(".ui.input input").blur
+			(changeClassOnClick)
+		})
