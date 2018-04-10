@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:html": "pug src/pug/[!_]*.pug -o dist -w",
-    "dev:css": "node-sass src/sass -ro dist -W",
+    "dev:html": "pug src/pug/[!_]*.pug -o dist -wP",
+    "dev:css": "node-sass src/sass -ro dist -w",
     "dev:semantic": "gulp -f lib/semantic/gulpfile.js build"
   },
   "author": "Yehoshua Oliveira (yehoshua.silva@fatec.sp.gov.br)",

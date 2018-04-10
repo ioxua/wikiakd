@@ -1,0 +1,55 @@
+.following.bar // https://semantic-ui.com/
+	position: fixed
+	top: 0px
+	z-index: 900
+	left: 0%
+	padding: 2em 0em
+	width: 100%
+	box-shadow: 0px 0px 0px 0px transparent
+	border-bottom: 1px solid transparent
+	transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease
+
+	&.light
+		padding: 0em 0em
+		background-color: #FFFFFF
+		border-bottom: 1px solid #DDDDDD
+		box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04)
+
+.masthead 
+	border-radius: 0 !important
+
+	height: 100vh
+
+.mastsearch
+	margin-top: 38vh
+
+	.ui.input
+		margin: 0 auto
+		padding: .67857143em 1em
+		padding-right: 0
+		border: 1px solid rgba(255, 255, 255, .15)
+		border-radius: .28571429rem 
+
+		transition: border-color .5s ease
+
+		i 
+			margin-right: .67857143em !important 
+
+		&:hover, &.dirty
+			border-color: white
+
+.mastmenu 
+	padding: 28px 0
+
+	.item
+		font-weight: bold
+		display: block
+
+		i.icon
+			&.right
+				margin-right: 0
+				margin-left: .35714286em 
+
+			&.left
+				margin-right: .35714286em 
+				margin-left: 0
