@@ -9,7 +9,7 @@ block content
 						.item.serif 
 							img(src="../assets/images/wiki-v1.png", alt="WikiAcad logotipo")
 						a.item Sobre
-						a.item Revista
+						a.item.periodical-trigger Revista
 						a.item Videoteca
 
 						.right.menu
@@ -18,22 +18,24 @@ block content
 								i.arrow.right.icon
 				.ui.text.container.mastsearch
 					img(src="../assets/images/wiki-v3.png").mastlogo
-					.ui.icon.inverted.huge.transparent.fluid.input
+					.ui.icon.inverted.big.transparent.fluid.input
 						input(placeholder="Procure um artigo...")
 						i.search.icon
 				.scroll-down
-					span Nossa revista
-					i.angle.down.icon
+					span.periodical-trigger Nossa revista
+					i.angle.down.icon.periodical-trigger
 			#content-wrapper
 				section
 					header.ui.gradient.vanusa 
-						h1.serif Cabeçalho
+						h1.serif Revista
 					each val in [1, 2, 3]
 						article
 							.ui.container
 								.text-wrapper
 									h1 Artigo muito foda
-									p.references ALMEIDA, Silva. 
+									p.references Por João da Silva Almeida
+									p.references 21min. de leitura
+									p.references ALMEIDA, João da Silva. 
 										b Artigo muito foda. 
 										| 2015. Acesso em &lt;12. Out. 2018&gt;
 									p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem saepe natus est culpa explicabo velit neque, reprehenderit eveniet. Quibusdam, quo doloremque! Fugit ex asperiores minus repellendus esse. Quam, praesentium quaerat.
@@ -81,7 +83,7 @@ append scripts
 
 			var docElem = window.document.documentElement,
 				scrollVal, isRevealed, noscroll, isAnimating, container = jQuery('#wrapper'),
-				scrollTrigger = jQuery('#scroll-trigger');
+				scrollTrigger = jQuery('.periodical-trigger');
 
 			function scrollY() {
 				return window.pageYOffset || docElem.scrollTop;
