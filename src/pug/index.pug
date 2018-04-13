@@ -2,22 +2,45 @@ extend _template
 
 block content
 	.pusher 
-		.ui.masthead.inverted.center.aligned.segment.gradient.vanusa
-			.ui.container
-				.ui.large.secondary.inverted.menu.mastmenu
-					.item.serif 
-						img(src="../assets/images/wiki-v1.png", alt="WikiAcad logotipo")
-					a.item Revista
-					a.item Videoteca
+		#wrapper
+			.ui.masthead.inverted.center.aligned.segment
+				.ui.container
+					.ui.large.secondary.inverted.menu.mastmenu
+						.item.serif 
+							img(src="../assets/images/wiki-v1.png", alt="WikiAcad logotipo")
+						a.item Sobre
+						a.item Revista
+						a.item Videoteca
 
-					.right.menu
-						.link.item
-							.text Entrar
-							i.arrow.right.icon
-			.ui.text.container.mastsearch
-				.ui.icon.inverted.huge.transparent.fluid.input
-					input(placeholder="Procure um artigo...")
-					i.search.icon
+						.right.menu
+							.link.item
+								.text Entrar
+								i.arrow.right.icon
+				.ui.text.container.mastsearch
+					img(src="../assets/images/wiki-v3.png").mastlogo
+					.ui.icon.inverted.huge.transparent.fluid.input
+						input(placeholder="Procure um artigo...")
+						i.search.icon
+				.scroll-down
+					span Nossa revista
+					i.angle.down.icon
+			#content-wrapper
+				section
+					header.ui.gradient.vanusa 
+						h1.serif Cabeçalho
+					each val in [1, 2, 3]
+						article
+							.ui.container
+								.text-wrapper
+									h1 Artigo muito foda
+									p.references ALMEIDA, Silva. 
+										b Artigo muito foda. 
+										| 2015. Acesso em &lt;12. Out. 2018&gt;
+									p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem saepe natus est culpa explicabo velit neque, reprehenderit eveniet. Quibusdam, quo doloremque! Fugit ex asperiores minus repellendus esse. Quam, praesentium quaerat.
+									p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa sapiente vero, necessitatibus minus nihil ut cupiditate animi qui accusamus esse, maxime facilis consequuntur deleniti quasi blanditiis illum voluptates aspernatur ex.
+									p 
+										i Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur laborum suscipit quasi, voluptate inventore voluptatem blanditiis voluptates commodi nesciunt debitis asperiores officiis aut! Ex alias accusamus illum incidunt neque laboriosam.
+						hr
 append scripts
 	script.
 		$(() => {
@@ -30,6 +53,90 @@ append scripts
 
 			$(".ui.input input").keyup(changeClassOnClick)
 			$(".ui.input input").focus(changeClassOnClick)
-			$(".ui.input input").blur
-			(changeClassOnClick)
+			$(".ui.input input").blur(changeClassOnClick)
+
+			var ie = (function() {
+				var undef, rv = -1;
+				var ua = window.navigator.userAgent;
+				var msie = ua.indexOf('MSIE ');
+				var trident = ua.indexOf('Trident/');
+				if (msie > 0) {
+					rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+				} else if (trident > 0) {
+					var rvNum = ua.indexOf('rv:');
+					rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
+				}
+				return ((rv > -1) ? rv : undef);
+			}());
+
+			function wheel(e) {}
+
+			function disable_scroll() {
+				window.onmousewheel = document.onmousewheel = wheel;
+			}
+
+			function enable_scroll() {
+				window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
+			}
+
+			var docElem = window.document.documentElement,
+				scrollVal, isRevealed, noscroll, isAnimating, container = jQuery('#wrapper'),
+				scrollTrigger = jQuery('#scroll-trigger');
+
+			function scrollY() {
+				return window.pageYOffset || docElem.scrollTop;
+			}
+
+			function scrollPage() {
+				scrollVal = scrollY();
+				if (noscroll && !ie) {
+					if (scrollVal < 0) return false;
+					window.scrollTo(0, 0);
+				}
+				if (container.hasClass('notrans')) {
+					container.removeClass('notrans');
+					return false;
+				}
+				if (isAnimating) {
+					return false;
+				}
+				if (scrollVal <= 0 && isRevealed) {
+					toggle(0);
+				} else if (scrollVal > 0 && !isRevealed) {
+					toggle(1);
+				}
+			}
+
+			function toggle(reveal) {
+				isAnimating = true;
+				if (reveal) {
+					container.addClass('modify');
+				} else {
+					noscroll = true;
+					disable_scroll();
+					container.removeClass('modify');
+				}
+				setTimeout(function() {
+					isRevealed = !isRevealed;
+					isAnimating = false;
+					if (reveal) {
+						noscroll = false;
+						enable_scroll();
+					}
+				}, 1200);
+			}
+			var pageScroll = scrollY();
+			noscroll = pageScroll === 0;
+			if (pageScroll) {
+				isRevealed = true;
+				container.addClass('notrans');
+				container.addClass('modify');
+			}
+			/*if (jQuery('body').hasClass('cover-push') && !Modernizr.touch) {*/
+				disable_scroll();
+				window.addEventListener('scroll', scrollPage);
+				scrollTrigger.click(function() {
+					toggle('reveal');
+				});
+			/*}*/
 		})
