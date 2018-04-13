@@ -1,0 +1,27 @@
+.content-test
+	background-color: blue
+	min-height: 110vh 
+
+#content-wrapper
+	opacity: .3
+	// A TRANSIÇÃO DA 'VOLTA' TEM DE SER POSTA NA 'IDA'
+	transition: all .6s ease-out
+	margin-top: 0
+	padding-top: 0
+
+	header 
+		padding: 130px 90px
+		text-align: center
+		color: white
+
+	article 
+		margin-top: 2rem
+		margin-bottom: 2.5rem
+
+#wrapper.modify
+	#content-wrapper
+		opacity: 1
+		margin-top: -100vh
+		padding-top: -14px
+		// E VICE-VERSA
+		transition: all .55s ease-out .3s
