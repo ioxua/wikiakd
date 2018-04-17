@@ -8,6 +8,9 @@
     "dev:html": "pug src/pug/[!_]*.pug -o dist -wP",
     "dev:css": "node-sass src/sass -ro dist -w",
     "dev:semantic": "gulp -f lib/semantic/gulpfile.js build",
+    "dev:html:win": "pug src/pug -o dist -wP",
+    "dev:css:win": "node-sass src/sass -ro dist -w",
+    "dev:semantic:win": "gulp --gulpfile lib/semantic build",
     "build": "cp -R lib dist"
   },
   "author": "Yehoshua Oliveira <yehoshua.silva@fatec.sp.gov.br>",
