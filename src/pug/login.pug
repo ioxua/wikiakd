@@ -1,0 +1,26 @@
+extend _template
+
+block content
+	.ui.masthead.clear.gray
+		.ui.centered.middle.aligned.grid.mastcontent
+			.six.wide.computer.eight.wide.tablet.column
+
+				h2.ui.image.header.center.aligned
+					img.image(src="../assets/images/wiki-v6-red.png", alt="WikiAcad logotipo")
+					.content Acesse sua conta
+
+				.ui.form.attached.segment
+					form
+						.field 
+							.ui.left.icon.input
+								i.user.icon
+								input(type="email", placeholder="Endereço de e-mail")
+						.field 
+							.ui.left.icon.input
+								i.lock.icon
+								input(type="password", placeholder="Senha")
+
+						.ui.fluid.large.primary.submit.button Entrar
+				.ui.bottom.attached.message Ainda não tem uma conta? 
+					a(href="#") Cadastre-se
+block scripts

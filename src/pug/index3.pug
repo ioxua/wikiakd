@@ -3,7 +3,7 @@ extend _template
 block content
 	.pusher 
 		#wrapper
-			.ui.masthead.inverted.center.aligned.segment
+			.ui.video.masthead.inverted.center.aligned.segment
 				.ui.container
 					.ui.large.secondary.inverted.menu.mastmenu
 						.item.serif 
@@ -17,7 +17,7 @@ block content
 								.text Entrar
 								i.arrow.right.icon
 				.ui.text.container.mastsearch
-					img(src="../assets/images/wiki-v3.png").mastlogo
+					img(src="../assets/images/wiki-v4.png").mastlogo
 					.ui.icon.inverted.big.transparent.fluid.input
 						input(placeholder="Procure um vídeo...")
 						i.search.icon
@@ -35,103 +35,3 @@ block content
 									p.references #{val * 7}min.
 									img(src="http://via.placeholder.com/800x450?text=Vídeo").ui.center
 						hr
-									
-append scripts
-	script.
-		$(() => {
-			const changeClassOnClick = function() {
-				if($(this).val() != "" || $(this).is(":focus"))
-					$(".ui.input").addClass("dirty")
-				else
-					$(".ui.input").removeClass("dirty")
-			}
-
-			$(".ui.input input").keyup(changeClassOnClick)
-			$(".ui.input input").focus(changeClassOnClick)
-			$(".ui.input input").blur(changeClassOnClick)
-
-			var ie = (function() {
-				var undef, rv = -1;
-				var ua = window.navigator.userAgent;
-				var msie = ua.indexOf('MSIE ');
-				var trident = ua.indexOf('Trident/');
-				if (msie > 0) {
-					rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-				} else if (trident > 0) {
-					var rvNum = ua.indexOf('rv:');
-					rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
-				}
-				return ((rv > -1) ? rv : undef);
-			}());
-
-			function wheel(e) {}
-
-			function disable_scroll() {
-				window.onmousewheel = document.onmousewheel = wheel;
-			}
-
-			function enable_scroll() {
-				window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;
-			}
-
-			var docElem = window.document.documentElement,
-				scrollVal, isRevealed, noscroll, isAnimating, container = jQuery('#wrapper'),
-				scrollTrigger = jQuery('.periodical-trigger');
-
-			function scrollY() {
-				return window.pageYOffset || docElem.scrollTop;
-			}
-
-			function scrollPage() {
-				scrollVal = scrollY();
-				if (noscroll && !ie) {
-					if (scrollVal < 0) return false;
-					window.scrollTo(0, 0);
-				}
-				if (container.hasClass('notrans')) {
-					container.removeClass('notrans');
-					return false;
-				}
-				if (isAnimating) {
-					return false;
-				}
-				if (scrollVal <= 0 && isRevealed) {
-					toggle(0);
-				} else if (scrollVal > 0 && !isRevealed) {
-					toggle(1);
-				}
-			}
-
-			function toggle(reveal) {
-				isAnimating = true;
-				if (reveal) {
-					container.addClass('modify');
-				} else {
-					noscroll = true;
-					disable_scroll();
-					container.removeClass('modify');
-				}
-				setTimeout(function() {
-					isRevealed = !isRevealed;
-					isAnimating = false;
-					if (reveal) {
-						noscroll = false;
-						enable_scroll();
-					}
-				}, 1200);
-			}
-			var pageScroll = scrollY();
-			noscroll = pageScroll === 0;
-			if (pageScroll) {
-				isRevealed = true;
-				container.addClass('notrans');
-				container.addClass('modify');
-			}
-			/*if (jQuery('body').hasClass('cover-push') && !Modernizr.touch) {*/
-				disable_scroll();
-				window.addEventListener('scroll', scrollPage);
-				scrollTrigger.click(function() {
-					toggle('reveal');
-				});
-			/*}*/
-		})
