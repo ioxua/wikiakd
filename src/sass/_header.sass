@@ -32,6 +32,24 @@ $header-opacity: .7
 
 	opacity: 1
 
+	&.clear
+		background-image: none !important
+
+	&.gray
+		background-color: $gray
+
+	&.video
+		background-image: url("../assets/images/bg4.jpg") !important
+
+.mastcontent
+	height: 100% // used only on login page. why not use it on indexes too?
+
+	h2.ui.header
+		margin-bottom: 1rem
+
+		.content
+			padding-left: 0
+
 #wrapper.modify  
 	.masthead
 		opacity: 0
@@ -75,7 +93,10 @@ $header-opacity: .7
 			&.left
 				margin-right: .35714286em 
 				margin-left: 0
-
+.ui.video
+	.scroll-down
+		margin-top: 18vh
+		
 .scroll-down
 	font-size: 18px
 	margin-top: 23vh

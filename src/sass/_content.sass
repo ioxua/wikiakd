@@ -24,3 +24,42 @@
 		margin-top: -100vh
 		// E VICE-VERSA
 		transition: all .55s ease-out .3s
+
+.issues
+	margin-top: 0 !important
+
+	.issue 
+		cursor: pointer
+		position: relative
+		height: 0
+		overflow: hidden
+		padding-top: (50.5635621484% * 3 / 5) !important // 31,25 * golden ratio
+		
+		color: white
+		font-size: 18px
+		line-height: 1.28
+
+		//background-image: url("http://via.placeholder.com/400x375")
+		background-repeat: no-repeat
+		background-position: center
+
+		.content 
+			top: 0
+			left: 0
+			min-width: 100%
+			min-height: 100%
+			padding: 16px
+			position: absolute
+
+			transition: all .3s
+
+			span 
+				font-size: .9em
+
+			&:hover
+				background-color: rgba(0, 0, 0, .4)
+
+@media only screen and (max-width: 767px)
+	.ui.issues 
+		.wide.column.issue[id^="issue"]
+			padding-top: 80.901699437% !important // golden ratio / 2
