@@ -1,0 +1,37 @@
+extend _template
+
+block content
+	.pusher 
+		#wrapper
+			.ui.masthead.inverted.center.aligned.segment
+				.ui.container
+					.ui.large.secondary.inverted.menu.mastmenu
+						.item.serif 
+							img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
+						a.item Sobre
+						a.item.periodical-trigger Revista
+						a.item Videoteca 
+
+						.right.menu
+							.link.item
+								.text Entrar
+								i.arrow.right.icon
+				.ui.text.container.mastsearch
+					img(src="/static/images/wiki-v5.png").mastlogo
+					.ui.icon.inverted.big.transparent.fluid.input
+						input(placeholder="Procure um artigo...")
+						i.search.icon
+				.scroll-down
+					span.periodical-trigger Nossa revista
+					i.angle.down.icon.periodical-trigger
+			#content-wrapper
+				section
+					header.ui.gradient.vanusa 
+						h1.serif Edições
+					.ui.centered.stackable.grid.issues
+						each i in [1, 2, 3, 4, 5, 6]
+							a#issue1.eight.wide.tablet.five.wide.computer.column.issue(style=`background-image: url(../assets/images/fg${i}.jpg)`)
+								.content
+									h4 Titulo
+									span 20/02/2018 &horbar; 8 artigos
+									p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt excepturi nesciunt quo maxime est aut sunt ipsam eum, dolor, quia, veritatis accusamus enim labore impedit beatae officia dolorum nam.

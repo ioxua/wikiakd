@@ -1,0 +1,37 @@
+extend _template
+
+block content
+	.pusher 
+		#wrapper
+			.ui.video.masthead.inverted.center.aligned.segment
+				.ui.container
+					.ui.large.secondary.inverted.menu.mastmenu
+						.item.serif 
+							img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
+						a.item Sobre
+						a.item Revista
+						a.item.periodical-trigger Videoteca
+
+						.right.menu
+							.link.item
+								.text Entrar
+								i.arrow.right.icon
+				.ui.text.container.mastsearch
+					img(src="/static/images/wiki-v4.png").mastlogo
+					.ui.icon.inverted.big.transparent.fluid.input
+						input(placeholder="Procure um vídeo...")
+						i.search.icon
+				.scroll-down
+					span.periodical-trigger Videoteca
+					i.angle.down.icon.periodical-trigger
+			#content-wrapper
+				section
+					each val in [1, 2, 3]
+						article
+							.ui.container
+								.text-wrapper
+									h1 Vídeo incrivel #{val}
+									p.references Por João da Silva Almeida
+									p.references #{val * 7}min.
+									img(src="http://via.placeholder.com/800x450?text=Vídeo").ui.center
+						hr

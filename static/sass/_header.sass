@@ -1,0 +1,114 @@
+$header-opacity: .7
+
+.following.bar // https://semantic-ui.com/
+	position: fixed
+	top: 0px
+	z-index: 900
+	left: 0%
+	padding: 2em 0em
+	width: 100%
+	box-shadow: 0px 0px 0px 0px transparent
+	border-bottom: 1px solid transparent
+	transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease
+
+	&.light
+		padding: 0em 0em
+		background-color: #FFFFFF
+		border-bottom: 1px solid #DDDDDD
+		box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04)
+
+.ui.masthead
+	border-radius: 0 !important
+	background-image: url("/static/images/bg2.jpg") !important
+	background-size: cover !important
+	background-repeat: no-repeat !important
+	background-position: center !important
+
+	height: 100vh
+	margin: 0
+
+	transition: all .9s ease-out
+	position: relative
+
+	opacity: 1
+
+	&.clear
+		background-image: none !important
+
+	&.gray
+		background-color: $gray
+
+	&.video
+		background-image: url("/static/images/bg4.jpg") !important
+
+.mastcontent
+	height: 100% // used only on login page. why not use it on indexes too?
+
+	h2.ui.header
+		margin-bottom: 1rem
+
+		.content
+			padding-left: 0
+
+#wrapper.modify
+	.masthead
+		opacity: 0
+		transform: translate(0, -100vh) //scale(.95)
+
+.mastlogo
+	max-width: 85%
+	margin-bottom: 1.4em
+
+.mastsearch
+	margin-top: 28vh
+
+	.ui.input
+		margin: 0 auto
+		padding: .67857143em 1em
+		padding-right: 0
+		border: 1px solid rgba(255, 255, 255, $header-opacity)
+		border-radius: .28571429rem
+
+		transition: border-color .5s ease
+
+		i
+			margin-right: .67857143em !important
+			opacity: $header-opacity
+
+		&:hover, &.dirty
+			border-color: white
+
+.mastmenu
+	padding: 28px 0
+
+	.item
+		font-weight: bold
+		display: block
+
+		i.icon
+			&.right
+				margin-right: 0
+				margin-left: .35714286em
+
+			&.left
+				margin-right: .35714286em
+				margin-left: 0
+.ui.video
+	.scroll-down
+		margin-top: 18vh
+
+.scroll-down
+	font-size: 18px
+	margin-top: 23vh
+	display: inline-block
+
+	span
+		display: block
+		cursor: pointer
+
+	i
+		font-size: 2.3rem
+		margin-top: 10px
+		cursor: pointer
+
+		animation: floatingSmall 1.2s infinite
