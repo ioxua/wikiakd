@@ -27,15 +27,15 @@ def index():
 
 @app.route('/index2', methods=['GET', 'POST'])
 def index2():
-return render_template('website/index2.pug')
+	return render_template('website/index2.pug')
 
 @app.route('/index3', methods=['GET', 'POST'])
 def index3():
-return render_template('website/index3.pug')
+	return render_template('website/index3.pug')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-return render_template('website/login.pug')
+	return render_template('website/login.pug')
 
 @app.errorhandler(404)
 def not_found(error):
