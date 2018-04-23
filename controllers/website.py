@@ -6,9 +6,9 @@ website_controller = Blueprint('website_controller', __name__)
 def index():
 	return render_template('website/index.pug')
 
-@website_controller.route('/index2', methods=['GET'])
+@website_controller.route('/indexTest', methods=['GET'])
 def index2():
-	return render_template('website/index2.pug')
+	return render_template('website/index-test.pug')
 
 @website_controller.route('/login', methods=['GET', 'POST'])
 def login():

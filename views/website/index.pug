@@ -10,14 +10,14 @@ block content
 							img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
 						a.item Sobre
 						a.item.periodical-trigger Revista
-						a.item Videoteca
+						a.item Videoteca 
 
 						.right.menu
 							.link.item
 								.text Entrar
 								i.arrow.right.icon
 				.ui.text.container.mastsearch
-					img(src="/static/images/wiki-v3.png").mastlogo
+					img(src="/static/images/wiki-v5.png").mastlogo
 					.ui.icon.inverted.big.transparent.fluid.input
 						input(placeholder="Procure um artigo...")
 						i.search.icon
@@ -27,23 +27,12 @@ block content
 			#content-wrapper
 				section
 					header.ui.gradient.vanusa 
-						h1.serif Revista
-					each val in [1, 2, 3]
-						article
-							.ui.container
-								.text-wrapper
-									h1 Artigo muito foda
-									p.references Por João da Silva Almeida
-									p.references 21min. de leitura
-									p.references ALMEIDA, João da Silva. 
-										b Artigo muito foda. 
-										| 2015. Acesso em &lt;12. Out. 2018&gt;
-										
-										a.ui.small.label Copiar
-											i.edit.icon
-
-									p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem saepe natus est culpa explicabo velit neque, reprehenderit eveniet. Quibusdam, quo doloremque! Fugit ex asperiores minus repellendus esse. Quam, praesentium quaerat.
-									p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa sapiente vero, necessitatibus minus nihil ut cupiditate animi qui accusamus esse, maxime facilis consequuntur deleniti quasi blanditiis illum voluptates aspernatur ex.
-									p 
-										i Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur laborum suscipit quasi, voluptate inventore voluptatem blanditiis voluptates commodi nesciunt debitis asperiores officiis aut! Ex alias accusamus illum incidunt neque laboriosam.
-						hr
+						h1.serif Edições
+					.ui.centered.stackable.grid.issues
+						each i in [1, 2, 3, 4, 5, 6]
+							a#issue1.eight.wide.tablet.five.wide.computer.column.issue(
+								style='background-image: url(/static/images/fg#{i}.jpg)')
+								.content
+									h4 Titulo
+									span 20/02/2018 &horbar; 8 artigos
+									p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt excepturi nesciunt quo maxime est aut sunt ipsam eum, dolor, quia, veritatis accusamus enim labore impedit beatae officia dolorum nam.
