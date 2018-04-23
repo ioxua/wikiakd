@@ -14,6 +14,7 @@ app.wsgi_app = SassMiddleware(app.wsgi_app, {
 })
 
 app.register_blueprint(website_controller)
+app.register_blueprint(video_controller)
 
 # Error handling is made here because of
 # http://flask.pocoo.org/docs/0.10/api/#flask.Blueprint.errorhandler
