@@ -1,12 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, config
 from sassutils.wsgi import SassMiddleware
 
 from controllers import *
-from config import Env
 
 app = Flask(__name__, template_folder='views')
 
-app.debug = Env['debug']
+app.config.from_object('config')
 
 app.jinja_env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
 app.wsgi_app = SassMiddleware(app.wsgi_app, {
