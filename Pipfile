@@ -9,6 +9,7 @@ pypugjs = "*"
 libsass = "*"
 flask-session = "*"
 python-memcached = "*"
+flask-wtf = "*"
 
 [dev-packages]
 pylint = "*"
