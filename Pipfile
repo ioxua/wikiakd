@@ -8,6 +8,7 @@ flask = "*"
 pypugjs = "*"
 libsass = "*"
 redis = "*"
+flask-session = "*"
 
 [dev-packages]
 pylint = "*"
