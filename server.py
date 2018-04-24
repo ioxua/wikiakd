@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, config
+
 from sassutils.wsgi import SassMiddleware
+from flask_session import Session
 
 from controllers import *
 
@@ -7,6 +9,7 @@ app = Flask(__name__, template_folder='views')
 
 app.config.from_object('config')
 
+Session(app)
 app.jinja_env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
 app.wsgi_app = SassMiddleware(app.wsgi_app, {
     'static': ('sass/', 'css/', '/static/css')

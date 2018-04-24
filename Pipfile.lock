@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6db1018b41c64a6a4bf0ab6dd0c1d0f9946ceddc06f867653b33d5f0800158be"
+            "sha256": "c5fadf602fba9f64551626abc4f53eaa5f8958a447403df1dd9e520e82b6978f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -86,13 +86,13 @@
             "index": "pypi",
             "version": "==5.6.0"
         },
-        "redis": {
+        "python-memcached": {
             "hashes": [
-                "sha256:8a1900a9f2a0a44ecf6e8b5eb3e967a9909dfed219ad66df094f27f7d6f330fb",
-                "sha256:a22ca993cea2962dbb588f9f30d0015ac4afcc45bee27d3978c0dbe9e97c6c0f"
+                "sha256:4dac64916871bd3550263323fc2ce18e1e439080a2d5670c594cf3118d99b594",
+                "sha256:a2e28637be13ee0bf1a8b6843e7490f9456fd3f2a4cb60471733c7b5d5557e4f"
             ],
             "index": "pypi",
-            "version": "==2.10.6"
+            "version": "==1.59"
         },
         "six": {
             "hashes": [

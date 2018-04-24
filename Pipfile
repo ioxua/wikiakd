@@ -7,8 +7,8 @@ name = "pypi"
 flask = "*"
 pypugjs = "*"
 libsass = "*"
-redis = "*"
 flask-session = "*"
+python-memcached = "*"
 
 [dev-packages]
 pylint = "*"
