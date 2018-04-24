@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, abort
 
 website_controller = Blueprint('website_controller', __name__)
 
+@website_controller.route('/', methods=['GET'])
 @website_controller.route('/index', methods=['GET'])
 def index():
 	return render_template('website/index.pug')
