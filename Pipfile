@@ -7,8 +7,10 @@ name = "pypi"
 flask = "*"
 pypugjs = "*"
 libsass = "*"
+redis = "*"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3.6"
