@@ -14,7 +14,7 @@ block content
 							= error.message
 				h2.ui.header Acesse sua conta
 				.ui.form.attached.segment
-					form(method='POST', action='#{url_for("website_controller.login")}')
+					form(method='POST', action='/login')
 						.field 
 							.ui.left.icon.input
 								i.user.icon
@@ -23,7 +23,7 @@ block content
 							.ui.left.icon.input
 								i.lock.icon
 								input(type="password", placeholder="Senha", name="password")
-						\#{form.csrf_token}
+						//\#{form.csrf_token}
 						input(type='submit', value='Entrar').ui.fluid.large.primary.submit.button
 				.ui.bottom.attached.message Ainda não tem uma conta? 
 					a(href="#") Cadastre-se
