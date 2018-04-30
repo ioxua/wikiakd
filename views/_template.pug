@@ -21,7 +21,7 @@ html
 				
 		block scripts
 			script.
-				$(() => {
+				$(function onReady() {
 					const changeClassOnClick = function() {
 						if($(this).val() != "" || $(this).is(":focus"))
 							$(".ui.input").addClass("dirty")
@@ -58,7 +58,9 @@ html
 					}
 
 					var docElem = window.document.documentElement,
-						scrollVal, isRevealed, noscroll, isAnimating, container = jQuery('#wrapper'),
+						scrollVal, isRevealed, noscroll, isAnimating, 
+						container = jQuery('#wrapper'),
+						menu = jQuery('.following.bar'),
 						scrollTrigger = jQuery('.periodical-trigger');
 
 					function scrollY() {
@@ -89,10 +91,12 @@ html
 						isAnimating = true;
 						if (reveal) {
 							container.addClass('modify');
+							menu.addClass('light fixed');
 						} else {
 							noscroll = true;
 							disable_scroll();
 							container.removeClass('modify');
+							menu.removeClass('light fixed');
 						}
 						setTimeout(function() {
 							isRevealed = !isRevealed;

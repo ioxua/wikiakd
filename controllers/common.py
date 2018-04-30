@@ -6,7 +6,7 @@ common_controller = Blueprint('common_controller', __name__)
 
 @common_controller.route('/profile', methods=['GET'])
 def profile():
-	return render_template('commons/index.pug')
+	return render_template('commons/profile.pug')
 
 @common_controller.route('/login', methods=['GET', 'POST'])
 def login():
