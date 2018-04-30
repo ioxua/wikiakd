@@ -5,8 +5,8 @@ from views import LoginForm
 common_controller = Blueprint('common_controller', __name__)
 
 @common_controller.route('/profile', methods=['GET'])
-def index():
-	return render_template('website/index.pug')
+def profile():
+	return render_template('commons/index.pug')
 
 @common_controller.route('/login', methods=['GET', 'POST'])
 def login():
@@ -25,11 +25,11 @@ def login():
 				session['user'] = User('admin', 'admin', 'normal_user')
 				return render_template('tests/todo.pug', message='Página interna da pourra toda!')
 			else:
-				return render_template('website-commons/login.pug', errors=[Error.defaultLoginError()], form=form)
+				return render_template('commons/login.pug', errors=[Error.defaultLoginError()], form=form)
 
 		elif form.errors:
 			print("Erros ao enviar D:")
-			return render_template('website-commons/login.pug', errors=Error.reduceErrorDict(form.errors), form=form)
+			return render_template('commons/login.pug', errors=Error.reduceErrorDict(form.errors), form=form)
 	
 	print("Não enviado")
-	return render_template('website-commons/login.pug', form=form)
+	return render_template('commons/login.pug', form=form)
