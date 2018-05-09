@@ -1,12 +1,53 @@
 extend _template
 
+append stylesheets
+	link(rel="stylesheet", href="style.css")
+	link(rel="stylesheet", href="/static/css/profile.sass.css")
+
 block content
-	#wrapper(style="background-color: white; height: 200vh")
-		.ui.following.bar.light.fixed
+	#wrapper
+		.ui.following.bar.fixed
 			.ui.container
-				.ui.secondary.menu
+				.ui.secondary.mastmenu.menu
 					.item 
 						img(src="/static/images/wiki-v6.png", alt="WikiAcad logotipo")
 					a.item Sobre
 					a.item.periodical-trigger Revista
 					a.item Videoteca 
+
+		#content-wrapper
+			.ui.profile.header
+			.ui.grid.container
+				.five.wide.column
+					.profile.image 
+						img(src="http://via.placeholder.com/300x300")
+					h1 Nome da pessoa
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quisquam non magnam temporibus autem hic consectetur veritatis id omnis laborum impedit vitae harum, perferendis sequi saepe eaque aperiam? Debitis, eum.
+				.seven.wide.column
+					a(href="/article") Escrever novo artigo
+					.ui.items
+						each i in [0, 1, 2]
+							.item
+								.image 
+									img(src="http://via.placeholder.com/150x150")
+								.content
+									a.header Nome do artigo
+									.meta
+										span 3 colaboradores
+									.description
+										p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio earum vero quidem minus sed excepturi nesciunt facere quaerat esse, officiis a itaque ipsa dolor laudantium labore, debitis consectetur iste velit.
+
+block scripts
+	script.
+		$(document).ready(() => {
+			const $window = $(window)
+			const $wrapper = $("#wrapper")
+			const $menu = $(".following.bar")
+			$window.scroll(function() {
+				if($window.scrollTop() > 0) {
+					$menu.addClass("lignt")
+				} else {
+					$menu.removeClass("lignt")
+				}
+			})
+		})

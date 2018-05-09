@@ -1,9 +1,12 @@
 extend _template
 
+append stylesheets
+	link(rel="stylesheet", href="/static/css/launching.sass.css")
+
 block content
 	.pusher 
 		#wrapper
-			.ui.following.bar
+			.ui.masthead.inverted.center.aligned.segment
 				.ui.container
 					.ui.secondary.inverted.menu.mastmenu
 						.item.serif 
@@ -16,8 +19,6 @@ block content
 							a.link.item(href='/login')
 								.text Entrar
 								i.arrow.right.icon
-			.ui.masthead.inverted.center.aligned.segment
-
 				.ui.text.container.mastsearch
 					img(src="/static/images/wiki-v5.png").mastlogo
 					.ui.icon.inverted.big.transparent.fluid.input
@@ -38,8 +39,3 @@ block content
 									h4 Titulo
 									span 20/02/2018 &horbar; 8 artigos
 									p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt excepturi nesciunt quo maxime est aut sunt ipsam eum, dolor, quia, veritatis accusamus enim labore impedit beatae officia dolorum nam.
-
-append stylesheets
-	style.
-		.ui.following.bar {
-			position: absolute }
