@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, abort
+from flask import Blueprint, render_template, request, abort, redirect
 from model import Error, User
 from views import LoginForm
 
@@ -22,7 +22,8 @@ def login():
 			passwd 	= request.form['password']
 			
 			if email == 'admin@admin.admin' and passwd == 'admin':
-				session['user'] = User('admin', 'admin', 'normal_user')
+				#session['user'] = User('admin', 'admin', 'normal_user')
+				return redirect('/profile')
 				return render_template('tests/todo.pug', message='Página interna da pourra toda!')
 			else:
 				return render_template('commons/login.pug', errors=[Error.defaultLoginError()], form=form)

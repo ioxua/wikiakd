@@ -23,3 +23,7 @@ def me():
 @website_controller.route('/secret', methods=['GET'])
 def secret():
 	return render_template('tests/todo.pug', message='Se você tá vendo isso, você está logado!')
+
+@website_controller.route('/article', methods=['GET'])
+def new_article():
+	return render_template('website/article.pug')
