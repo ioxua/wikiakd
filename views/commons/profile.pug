@@ -1,32 +1,47 @@
 extend _template
 
 append stylesheets
-	link(rel="stylesheet", href="style.css")
 	link(rel="stylesheet", href="/static/css/profile.sass.css")
 
 block content
 	#wrapper
-		.ui.following.bar.fixed
+		.ui.tiny.modal
+			.header Novo artigo
+			.content.clearfix
+				h4.dividing.header Precisamos saber algo sobre o seu artigo antes.
+				form.ui.form
+					.required.field
+						label Título
+						input(type="text", placeholder="Análise da Estrutura Molecular da Água")
+					.required.field
+						label Descrição
+						textarea(rows="3", placeholder="O objetivo desse artigo é avaliar as propriedades místicas do H&#8322O")
+					input(type="submit", value="Pronto!").ui.right.floated.primary.button
+					input(type="reset",	value="Cancelar").ui.right.floated.button
+					
+		#menu-bar.ui.following.bar
 			.ui.container
-				.ui.secondary.mastmenu.menu
-					.item 
-						img(src="/static/images/wiki-v6.png", alt="WikiAcad logotipo")
+				.ui.secondary.mastmenu.inverted.menu
+					.item.logo
+						img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
 					a.item Sobre
 					a.item.periodical-trigger Revista
-					a.item Videoteca 
+					a.item Colaborar 
 
 		#content-wrapper
 			.ui.profile.header
-			.ui.grid.container
+				.ui.university.image
+					img(src="/static/images/fatec.png")
+			.ui.grid.stackable.container
 				.five.wide.column
-					.profile.image 
+					.ui.profile.image 
 						img(src="http://via.placeholder.com/300x300")
 					h1 Nome da pessoa
 					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quisquam non magnam temporibus autem hic consectetur veritatis id omnis laborum impedit vitae harum, perferendis sequi saepe eaque aperiam? Debitis, eum.
 				.seven.wide.column
-					a(href="/article") Escrever novo artigo
+					a(id="new-article", href="#") Escrever novo artigo
 					.ui.items
-						each i in [0, 1, 2]
+						each i in [0, 1, 2, 3, 4]
 							.item
 								.image 
 									img(src="http://via.placeholder.com/150x150")
@@ -38,16 +53,42 @@ block content
 										p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio earum vero quidem minus sed excepturi nesciunt facere quaerat esse, officiis a itaque ipsa dolor laudantium labore, debitis consectetur iste velit.
 
 block scripts
+	script(src="/static/lib/semantic/components/visibility.min.js")
+	script(src="/static/lib/semantic/components/transition.min.js")
+	script(src="/static/lib/semantic/components/dimmer.min.js")
+	script(src="/static/lib/semantic/components/modal.min.js")
 	script.
 		$(document).ready(() => {
 			const $window = $(window)
 			const $wrapper = $("#wrapper")
-			const $menu = $(".following.bar")
-			$window.scroll(function() {
-				if($window.scrollTop() > 0) {
-					$menu.addClass("lignt")
-				} else {
-					$menu.removeClass("lignt")
+			const $followingBar = $("#menu-bar")
+			const $menu = $followingBar.find('.menu')
+			const $logo = $followingBar.find('.logo.item img')
+			const darkLogo = "/static/images/wiki-v6.png"
+			const lightLogo = "/static/images/wiki-v1.png"
+			$('body').visibility({
+				offset         : -10,
+				observeChanges : false,
+				once           : false,
+				continuous     : false,
+				onTopPassed: function() {
+					requestAnimationFrame(function() {
+						$followingBar.addClass('light fixed')
+						$menu.removeClass('inverted')
+						$logo.prop('src', darkLogo)
+					});
+				},
+				onTopPassedReverse: function() {
+					requestAnimationFrame(function() {
+						$followingBar.removeClass('light fixed')
+						$menu.addClass('inverted')
+						$logo.prop('src', lightLogo)
+					})
 				}
+			})
+
+			$("#new-article").click(() => {
+				console.log("asdasd")
+				$(".ui.modal").modal('show')
 			})
 		})

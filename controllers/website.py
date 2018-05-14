@@ -27,3 +27,7 @@ def secret():
 @website_controller.route('/article', methods=['GET'])
 def new_article():
 	return render_template('website/article.pug')
+
+@website_controller.route('/article/<id>', methods=['GET'])
+def read_article(id):
+	return render_template('tests/todo.pug', message='Leitura do artigo nº{}'.format(id))
