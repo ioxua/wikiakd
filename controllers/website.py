@@ -24,6 +24,10 @@ def me():
 def secret():
 	return render_template('tests/todo.pug', message='Se você tá vendo isso, você está logado!')
 
+@website_controller.route('/about', methods=['GET'])
+def about():
+	return render_template('website/about.pug')
+
 @website_controller.route('/article', methods=['GET'])
 def new_article():
 	return render_template('website/article.pug')

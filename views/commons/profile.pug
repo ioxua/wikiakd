@@ -18,15 +18,9 @@ block content
 						textarea(rows="3", placeholder="O objetivo desse artigo é avaliar as propriedades místicas do H&#8322O")
 					input(type="submit", value="Pronto!").ui.right.floated.primary.button
 					input(type="reset",	value="Cancelar").ui.right.floated.button
-					
-		#menu-bar.ui.following.bar
-			.ui.container
-				.ui.secondary.mastmenu.inverted.menu
-					.item.logo
-						img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
-					a.item Sobre
-					a.item.periodical-trigger Revista
-					a.item Colaborar 
+
+		include components/following_menu.pug
+		+followingMenu()
 
 		#content-wrapper
 			.ui.profile.header
@@ -38,7 +32,7 @@ block content
 						img(src="http://via.placeholder.com/300x300")
 					h1 Nome da pessoa
 					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quisquam non magnam temporibus autem hic consectetur veritatis id omnis laborum impedit vitae harum, perferendis sequi saepe eaque aperiam? Debitis, eum.
-				.seven.wide.column
+				.eleven.wide.column
 					a(id="new-article", href="#") Escrever novo artigo
 					.ui.items
 						each i in [0, 1, 2, 3, 4]
@@ -57,38 +51,12 @@ block scripts
 	script(src="/static/lib/semantic/components/transition.min.js")
 	script(src="/static/lib/semantic/components/dimmer.min.js")
 	script(src="/static/lib/semantic/components/modal.min.js")
+	script(src="/static/js/following_menu.js")
 	script.
 		$(document).ready(() => {
-			const $window = $(window)
-			const $wrapper = $("#wrapper")
-			const $followingBar = $("#menu-bar")
-			const $menu = $followingBar.find('.menu')
-			const $logo = $followingBar.find('.logo.item img')
-			const darkLogo = "/static/images/wiki-v6.png"
-			const lightLogo = "/static/images/wiki-v1.png"
-			$('body').visibility({
-				offset         : -10,
-				observeChanges : false,
-				once           : false,
-				continuous     : false,
-				onTopPassed: function() {
-					requestAnimationFrame(function() {
-						$followingBar.addClass('light fixed')
-						$menu.removeClass('inverted')
-						$logo.prop('src', darkLogo)
-					});
-				},
-				onTopPassedReverse: function() {
-					requestAnimationFrame(function() {
-						$followingBar.removeClass('light fixed')
-						$menu.addClass('inverted')
-						$logo.prop('src', lightLogo)
-					})
-				}
-			})
+			WikiAcad.components.FollowingMenu.start()
 
 			$("#new-article").click(() => {
-				console.log("asdasd")
 				$(".ui.modal").modal('show')
 			})
 		})

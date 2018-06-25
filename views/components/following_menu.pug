@@ -1,0 +1,32 @@
+
+mixin _menuOption(url, name, currentUrl, classes)
+	if url == name or url == currentUrl
+		a.item.active(href=url, class=classes)=name
+	else
+		a.item(href=url, class=classes)=name
+		
+
+// parameters = {
+//		classes = {'class1': true, 'class2': 'asd' === 'asd'}
+// }
+mixin followingMenu()
+	#menu-bar.ui.following.bar
+		.ui.container
+			.ui.secondary.mastmenu.menu.inverted
+				a.item.logo(href="/")
+					img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
+				
+				+_menuOption('/about', 		'Sobre', 		currentPage, '')
+				+_menuOption('/revista', 	'Revista', 		currentPage, '')
+				+_menuOption('/collab', 	'Colaborar', 	currentPage, '')
+
+mixin followingMenuLight(currentPage)
+	#menu-bar.ui.following.bar.light
+		.ui.container
+			.ui.secondary.mastmenu.menu
+				a.item.logo(href="/")
+					img(src="/static/images/wiki-v6.png", alt="WikiAcad logotipo")
+				
+				+_menuOption('/about', 		'Sobre', 		currentPage, '')
+				+_menuOption('/revista', 	'Revista', 		currentPage, '')
+				+_menuOption('/collab', 	'Colaborar', 	currentPage, '')
