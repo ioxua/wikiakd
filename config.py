@@ -7,3 +7,5 @@ SECRET_KEY = '9\xe3\xd0\xcf\x1f\x8b\x9f\xb4\x97\xf3-%\xda5\xcfq\xfa\x9d\xdcs\xc5
 # Flask Session configuration
 SESSION_TYPE = 'memcached'
 WTF_CSRF_ENABLED = not DEBUG
+
+TEMPLATES_AUTO_RELOAD = True

@@ -35,3 +35,8 @@ def new_article():
 @website_controller.route('/article/<id>', methods=['GET'])
 def read_article(id):
 	return render_template('tests/todo.pug', message='Leitura do artigo nº{}'.format(id))
+
+@website_controller.route('/articles', methods=['GET'])
+def article_list():
+	query = request.args.get('q')
+	return render_template('website/search.pug', q=query)

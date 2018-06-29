@@ -1,5 +1,8 @@
 extend _template
 
+block title
+	title WikiAcad
+	
 append stylesheets
 	link(rel="stylesheet", href="/static/css/launching.sass.css")
 
@@ -9,11 +12,12 @@ block content
 			.ui.masthead.inverted.center.aligned.segment
 				.ui.container
 					.ui.secondary.inverted.menu.mastmenu
-						.item.serif 
+						a.item.logo(href="/")
 							img(src="/static/images/wiki-v1.png", alt="WikiAcad logotipo")
 						a.item(href="/about") Sobre
-						a.item.periodical-trigger Revista
-						a.item Videoteca 
+						a.item(href="/articles") Artigos
+						//a.item.periodical-trigger Revista
+						//a.item Videoteca 
 
 						.right.menu
 							a.link.item(href='/login')
@@ -21,13 +25,14 @@ block content
 								i.arrow.right.icon
 				.ui.text.container.mastsearch
 					img(src="/static/images/wiki-v5.png").mastlogo
-					.ui.icon.inverted.big.transparent.fluid.input
-						input(placeholder="Procure um artigo...")
-						i.search.icon
-				.scroll-down
+					form.ui.form#searchForm(method="GET", action="/articles")
+						.ui.icon.inverted.big.transparent.fluid.input
+							input#search(name="q", placeholder="Procure um artigo...")
+							i.clickable.search.icon
+				//.scroll-down
 					span.periodical-trigger Nossa revista
 					i.angle.down.icon.periodical-trigger
-			#content-wrapper
+			//#content-wrapper
 				section
 					header.ui.gradient.vanusa 
 						h1.serif Edições
@@ -39,4 +44,13 @@ block content
 									h4 Titulo
 									span 20/02/2018 &horbar; 8 artigos
 									p Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit incidunt excepturi nesciunt quo maxime est aut sunt ipsam eum, dolor, quia, veritatis accusamus enim labore impedit beatae officia dolorum nam.
-									
+
+block scripts
+	script.
+		$(document).ready(function() {
+			$("#search").on('keypress', (event) => {
+				if (event.keyCode == 13) {
+					$("#searchForm").submit()
+				}
+			})
+		})

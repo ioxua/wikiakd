@@ -10,6 +10,7 @@ libsass = "*"
 flask-session = "*"
 python-memcached = "*"
 flask-wtf = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 pylint = "*"
