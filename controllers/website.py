@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, abort, session
 from model import Error, User
 from views import LoginForm
-from models import Article
+from models import *
 #from 
 
 website_controller = Blueprint('website_controller', __name__)
@@ -27,8 +27,27 @@ def secret():
 def about():
 	return render_template('website/about.pug')
 
+# Mock de artigos
+arts = []
+
 @website_controller.route('/article', methods=['GET'])
 def new_article():
+	title = request.args['title']
+	subtitle = request.args['subtitle']
+	content = request.args['content']
+	
+	# Leader
+	leaderName = request.args['leaderName']
+	leader = Leader(leaderName, None)
+	
+	# Author
+	authorName = request.args['authorName']
+
+	# Article
+	art = Article(title, subtitle, authorName, content, leader)
+
+	arts.append(art)
+	print(arts)
 	return render_template('website/article.pug')
 
 @website_controller.route('/article/<id>', methods=['GET'])
