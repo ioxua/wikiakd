@@ -1,0 +1,33 @@
+extend _template
+
+block title
+	title Sobre a WikiAcad
+	
+append stylesheets
+	link(rel="stylesheet", href="/static/css/about.sass.css")
+
+block content
+	#wrapper	
+		include components/following_menu.pug
+		+followingMenuLight('/about')
+
+		#content-wrapper.pushed
+			article
+				.ui.container
+					h1.block O que é a WikiAcad?
+					h2.block Uma pequena introdução
+
+					section.block.justify
+						p A Wikiacad é um canal privilegiado de interação com o estudante.
+						p De início quero esclarecer que ela só se concretizou graças à vontade e aos esforços de 6 equipes discentes.
+						p Importante também dizer que ela encontra-se ainda em construção e que muitas novidades são esperadas. Aliás, ela sempre estará, por definição, se reconstruindo.
+						p Comecei a pensar em criar essa ferramenta no segundo semestre de 2014, primeiramente para registrar os resultados dos trabalhos realizados por meus alunos na disciplica de Sociedade e Tecnologia. A primeira experiência foi, portanto, um blog com essa denominação. No semestre seguinte, duas equipes apresentaram propostas diferentes: uma reelaboração do blog e a criação de um site. A versão da wiki começou a ser moldada no segundo semestre de 2015, mas foi no começo de 2016 que boa parte das ferramentas foram implementadas.
+						p O objetivo da wiki é facilitar e promover o intercâmbio de ideias entre os alunos, entre as equipes de trabalho que realizam as pesquisas em minhas disciplinas, bem como entre o professor e seus alunos. Obviamente, também espero porder contar com a participação de meus colegas professores, já que grande parte dos estudos orientados por mim são transdisciplinares.
+						p Também desejo informar que os textos publicados aqui foram escritos por alunos e alunas das séries iniciais dos cursos de Análise e Desenvolvimento de Sistemas e Tencologia em Agronegócio da Fatec Mogi das Cruzes.
+
+					//hr
+					section.right.aligned.author.block
+						i Prof. Dr. Elias Ribeiro de Castro
+						i Fatec de Mogi das Cruzes
+block scripts
+	// Resetting jQuery

@@ -1,0 +1,27 @@
+extend _template
+
+append stylesheets
+	link(rel="stylesheet", href="/static/css/articles.sass.css")
+
+block content
+	#wrapper	
+		include components/following_menu.pug
+		+followingMenuLight('/articles')
+
+		#content-wrapper.pushed
+			.ui.container
+				if q 
+					h1 Buscando por: "
+						=q
+						|"
+				else
+					h1 Todos os artigos
+				each i in [1, 2, 3]
+					.ui.piled.segment
+						h4.ui.header Artigo de número 
+							= i
+						p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore vero, saepe, animi, distinctio pariatur ratione excepturi autem laudantium neque tenetur iste adipisci vel eligendi quibusdam molestiae obcaecati officia a expedita!
+
+
+block scripts
+	// Resetting jQuery

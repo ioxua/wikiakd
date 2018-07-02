@@ -3,10 +3,12 @@ from flask import Flask, render_template, request, config
 from sassutils.wsgi import SassMiddleware
 from flask_session import Session
 from flask_wtf.csrf import CSRFProtect
+from flask_sqlalchemy import SQLAlchemy
 
 from controllers import *
 
 app = Flask(__name__, template_folder='views')
+db = SQLAlchemy(app)
 
 app.config.from_object('config')
 

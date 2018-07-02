@@ -1,12 +1,62 @@
 extend _template
 
+append stylesheets
+	link(rel="stylesheet", href="/static/css/profile.sass.css")
+
 block content
-	#wrapper(style="background-color: white; height: 200vh")
-		.ui.following.bar.light.fixed
-			.ui.container
-				.ui.secondary.menu
-					.item 
-						img(src="/static/images/wiki-v6.png", alt="WikiAcad logotipo")
-					a.item Sobre
-					a.item.periodical-trigger Revista
-					a.item Videoteca 
+	#wrapper
+		.ui.tiny.modal
+			.header Novo artigo
+			.content.clearfix
+				h4.dividing.header Precisamos saber algo sobre o seu artigo antes.
+				form.ui.form
+					.required.field
+						label Título
+						input(type="text", placeholder="Análise da Estrutura Molecular da Água")
+					.required.field
+						label Descrição
+						textarea(rows="3", placeholder="O objetivo desse artigo é avaliar as propriedades místicas do H&#8322O")
+					input(type="submit", value="Pronto!").ui.right.floated.primary.button
+					input(type="reset",	value="Cancelar").ui.right.floated.button
+
+		include components/following_menu.pug
+		+followingMenu()
+
+		#content-wrapper
+			.ui.profile.header
+				.ui.university.image
+					img(src="/static/images/fatec.png")
+			.ui.grid.stackable.container
+				.five.wide.column
+					.ui.profile.image 
+						img(src="http://via.placeholder.com/300x300")
+					h1 Nome da pessoa
+					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quisquam non magnam temporibus autem hic consectetur veritatis id omnis laborum impedit vitae harum, perferendis sequi saepe eaque aperiam? Debitis, eum.
+				.eleven.wide.column
+					a(id="new-article", href="#") Escrever novo artigo
+					.ui.items
+						each i in [0, 1, 2, 3, 4]
+							.item
+								.image 
+									img(src="http://via.placeholder.com/150x150")
+								.content
+									a.header Nome do artigo
+									.meta
+										span 3 colaboradores
+									.description
+										p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio earum vero quidem minus sed excepturi nesciunt facere quaerat esse, officiis a itaque ipsa dolor laudantium labore, debitis consectetur iste velit.
+
+block scripts
+	script(src="/static/lib/semantic/components/visibility.min.js")
+	script(src="/static/lib/semantic/components/transition.min.js")
+	script(src="/static/lib/semantic/components/dimmer.min.js")
+	script(src="/static/lib/semantic/components/modal.min.js")
+	script(src="/static/js/following_menu.js")
+	script.
+		$(document).ready(() => {
+			WikiAcad.components.FollowingMenu.start()
+
+			$("#new-article").click(() => {
+				$(".ui.modal").modal('show')
+			})
+		})
