@@ -14,7 +14,8 @@ class Article:
 		has = False
 		for each in where_to_look:
 			has = has or each.__contains__(query)
-			print(each, has)
+		#if not has:
+		#	has = reduce((lambda temp, each: each.upper().contains(query, [each.paragraphs for each in self.blocks])))
 		return has
 
 class ArticleBlock:
