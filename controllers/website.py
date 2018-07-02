@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, request, abort, session
 from model import Error, User
 from views import LoginForm
 from models import *
-#from 
 
 website_controller = Blueprint('website_controller', __name__)
 
@@ -77,3 +76,7 @@ def search_function(query):
 			return article.contains(query_upper)
 		return True
 	return res
+
+@website_controller.route('/addArticle', methods=['GET'])
+def add_article():
+	return render_template('website/addArticle.pug')
