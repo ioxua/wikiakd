@@ -1,43 +1,42 @@
 extend _template
 
 append stylesheets
+    link(rel="stylesheet", href="/static/css/profile.sass.css")
     link(rel="stylesheet", href="/static/css/addArticle.sass.css")
     link(href='https://cdn.quilljs.com/1.3.6/quill.snow.css', rel='stylesheet')
 
-
 block content
-    .ui.container(style='margin-top: 30px;')
-        form(action="article")
-            .ui.form
-                h3(class="ui dividing header") Adicionar artigo
-                
-                .field
-                    label Título
-                    input(placeholder='Título do artigo', type='text', name='title') 
-                .field
-                    label Subtitulo
-                    input(placeholder='Subtitulo do artigo', type='text', name='subtitle') 
-                .field
-                    label Conteúdo
-                    .row.form-group
-                        input(name='about', type='hidden')
-                        #editor-container
-                        .row
-                .two.fields
-                    .field
-                        label Orientador
-                        input(placeholder='Nome do orientador', type='text', name="leader")
-                    .field
-                        label Autor
-                        input(placeholder='Nome do autor', type='text', name="author")
-                            
-
-                .field
-                    input(type="submit", class="ui submit button right floated", value="Adicionar")
-            br
-            br
-            br
-
+    #wrapper
+        include components/following_menu.pug
+        +followingMenu()
+        #content-wrapper
+            .ui.profile.header
+                .ui.university.image
+                    img(src="/static/images/fatec.png")
+            .ui.container(style='margin-top: 30px;')
+                form(action="article")
+                    .ui.form
+                        h3(class="ui dividing header") Adicionar artigo
+                        .field
+                            label Título
+                            input(placeholder='Título do artigo', type='text', name='title') 
+                        .field
+                            label Subtítulo
+                            input(placeholder='Subtítulo do artigo', type='text', name='subtitle') 
+                        .two.fields
+                            .field
+                                label Orientador
+                                input(placeholder='Nome do orientador', type='text', name="leader")
+                            .field
+                                label Autor
+                                input(placeholder='Nome do autor', type='text', name="author")
+                        .field
+                            label Conteúdo
+                            .row.form-group
+                                input(name='about', type='hidden')
+                                #editor-container(style="min-height:250px")
+                        .field
+                            input(type="submit", class="ui submit primary button right floated", value="Pronto!")
 
 block scripts
     script(src='https://cdn.quilljs.com/1.3.6/quill.js')
@@ -45,9 +44,9 @@ block scripts
         var quill = new Quill('#editor-container', {
             modules: {
                 toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                    ['bold', 'italic'],
+                    ['link', 'blockquote', 'code-block', 'image'],
+                    [{ list: 'ordered' }, { list: 'bullet' }]
                 ]
             },
             placeholder: 'Escreva o conteúdo do seu artigo...',

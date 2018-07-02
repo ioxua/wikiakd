@@ -77,6 +77,6 @@ def search_function(query):
 		return True
 	return res
 
-@website_controller.route('/addArticle', methods=['GET'])
+@website_controller.route('/newArticle', methods=['GET'])
 def add_article():
 	return render_template('website/addArticle.pug')
