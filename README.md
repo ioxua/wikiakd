@@ -8,4 +8,4 @@
 - Para instalar as dependências:
   - Linux/Windows: `pipenv install`
 - Rodando o projeto:
-  - Linux/Windows (?): `pipenv run python3.6 main.py`
+  - Linux/Windows (?): `pipenv run python3.6 server.py`
