@@ -1,8 +1,6 @@
 from flask import Blueprint, render_template, request, abort, session
 from model import Error, User
 from views import LoginForm
-from models import Article
-#from 
 
 website_controller = Blueprint('website_controller', __name__)
 
@@ -42,5 +40,8 @@ def article_list():
 
 @website_controller.route('/test', methods=['GET'])
 def test():
-	art = Article(title='TITULO DAORA', content_path='C:/path/to/sla')
-	art.save()
+	pass
+
+@website_controller.route('/addArticle', methods=['GET'])
+def new_addArticle():
+	return render_template('website/addArticle.pug')
