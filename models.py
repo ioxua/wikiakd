@@ -1,21 +1,16 @@
 class Article:
-    def __init__(self, title, subtitle, authors, files, leaders):
+    def __init__(self, title, subtitle, authors, content, leaders):
         self.title = title
         self.subtitle = subtitle
         self.authors = authors
-        self.files = files
+        self.content = content
         self.leaders = leaders
 
-class File:
-    def __init__(self, path, extension):
-        self.path = path
-        self.extension = extension
-
 class Author:
-    def __init__(self, name, user, articles):
-        self.name = name
-        self.user = user
-        self.articles = articles
+	def __init__(self, name, user, articles):
+		self.name = name
+		self.articles = articles
+		self.user = user
 
 class Leader:
     def __init__(self, name, user):
