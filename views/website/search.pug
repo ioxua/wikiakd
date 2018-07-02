@@ -11,16 +11,21 @@ block content
 		#content-wrapper.pushed
 			.ui.container
 				if q 
-					h1 Buscando por: "
+					h1.ui.header Buscando por: "
 						=q
 						|"
+						.sub.header #{result_quantity} resultados
 				else
 					h1 Todos os artigos
-				each i in [1, 2, 3]
-					.ui.piled.segment
-						h4.ui.header Artigo de número 
-							= i
-						p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore vero, saepe, animi, distinctio pariatur ratione excepturi autem laudantium neque tenetur iste adipisci vel eligendi quibusdam molestiae obcaecati officia a expedita!
+				if q and result_quantity == 0
+					h3 Sem resultados D:
+				else 
+					.ui.divided.items
+						each article in query_results
+							.item
+								.content
+									a.header(href="/article/#{article.id}")=article.title
+									.description=article.content
 
 
 block scripts

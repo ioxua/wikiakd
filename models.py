@@ -1,9 +1,23 @@
-from server import db
 
-# Creating models here. This is wrong on SO many levels
+class Article:
+	def __init__(self, id, title, subtitle=None, blocks=[], author="", leader=""):
+		self.subtitle 	= subtitle
+		self.blocks		= blocks
+		self.author		= author
+		self.leader		= leader
+		self.title		= title
+		self.id 		= id
 
-class Article(db.Model):
-	title = db.Column(db.String(80), nullable=False)
-	content_path = db.Column(db.String(100), unique=True, nullable=False)
+	def contains(self, query):
+		where_to_look = [self.title, self.author, self.leader, self.subtitle]
+		where_to_look = [each.upper() for each in where_to_look]
+		has = False
+		for each in where_to_look:
+			has = has or each.__contains__(query)
+			print(each, has)
+		return has
 
-db.create_all()
+class ArticleBlock:
+	def __init__(self, title, paragraphs):
+		self.title 		= title
+		self.paragraphs = paragraphs
