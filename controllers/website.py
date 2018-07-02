@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, abort, session
 from model import Error, User
 from views import LoginForm
+from models import Article
+#from 
 
 website_controller = Blueprint('website_controller', __name__)
 
@@ -9,16 +11,13 @@ website_controller = Blueprint('website_controller', __name__)
 def index():
 	return render_template('website/index.pug')
 
-
 @website_controller.route('/indexTest', methods=['GET'])
 def index2():
 	return render_template('website/index-test.pug')
 
-
 @website_controller.route('/me', methods=['GET'])
 def me():
 	return render_template('tests/todo.pug', next='http://localhost:5000/secret', message='Faça login primeiro D:')
-
 
 @website_controller.route('/secret', methods=['GET'])
 def secret():
@@ -40,3 +39,8 @@ def read_article(id):
 def article_list():
 	query = request.args.get('q')
 	return render_template('website/search.pug', q=query)
+
+@website_controller.route('/test', methods=['GET'])
+def test():
+	art = Article(title='TITULO DAORA', content_path='C:/path/to/sla')
+	art.save()
