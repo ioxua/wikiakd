@@ -2,6 +2,7 @@ extend _template
 
 append stylesheets
 	link(rel="stylesheet", href="/static/css/articles.sass.css")
+	link(rel="stylesheet", href="/static/css/footer.sass.css")
 
 block content
 	#wrapper	
@@ -13,13 +14,17 @@ block content
 				.ui.container
 					h1.block=article.title
 					h2.block=article.subtitle
+					section.right.aligned.author.block
+						i Por #{article.author}
+						i Publicado em #{article.publishDate.strftime('%d/%m/%Y')}
+						i Orientador: #{article.leader}
 					
 					each block in article.blocks
 						section.block.justify
 							h3.ui.dividing.header=block.title
 							each paragraph in block.paragraphs
 								p=paragraph
-
+	include components/footer.pug
 
 
 block scripts

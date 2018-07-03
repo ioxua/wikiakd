@@ -1,6 +1,7 @@
 extend _template
 
 append stylesheets
+	link(rel="stylesheet", href="/static/css/footer.sass.css")
 	link(rel="stylesheet", href="/static/css/profile.sass.css")
 
 block content
@@ -44,22 +45,23 @@ block content
 				.five.wide.column
 					.ui.profile.image 
 						img(src="http://via.placeholder.com/300x300")
-					h1 Nome da pessoa
-					p Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quisquam non magnam temporibus autem hic consectetur veritatis id omnis laborum impedit vitae harum, perferendis sequi saepe eaque aperiam? Debitis, eum.
+					h1 Administrador
+					p Sou o administrador do sistema. Para mim, nada é impossível :D
 				.eleven.wide.column
 					a(id="new-article", href="/newArticle") Escrever novo artigo
 					.ui.items
-						each i in [0, 1, 2, 3, 4]
+						each article in articles
 							.item
 								.image 
 									img(src="http://via.placeholder.com/150x150")
 								.content
-									a.header Nome do artigo
+									a.header(href="/article/#{article.id}")=article.title
 									.meta
-										span 3 colaboradores
+										span 1 colaborador
 									.description
-										p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio earum vero quidem minus sed excepturi nesciunt facere quaerat esse, officiis a itaque ipsa dolor laudantium labore, debitis consectetur iste velit.
+										p=article.blocks[0].paragraphs[0]
 
+	include components/footer.pug
 block scripts
 	script(src="/static/lib/semantic/components/visibility.min.js")
 	script(src="/static/lib/semantic/components/transition.min.js")

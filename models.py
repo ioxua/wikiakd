@@ -1,6 +1,7 @@
-
+from datetime import date
 class Article:
-	def __init__(self, id, title, subtitle=None, blocks=[], author="", leader=""):
+	def __init__(self, id, title, subtitle=None, blocks=[], author=None, leader=None, publishDate=date.today()):
+		self.publishDate = publishDate
 		self.subtitle 	= subtitle
 		self.blocks		= blocks
 		self.author		= author
@@ -18,10 +19,13 @@ class Article:
 		#	has = reduce((lambda temp, each: each.upper().contains(query, [each.paragraphs for each in self.blocks])))
 		return has
 
+	def __repr__(self):
+		return "<Article title:{} subtitle:{} leader:{} author:{}>".format(self.title, self.subtitle, self.leader, self.author)
+
 class ArticleBlock:
-	def __init__(self, title="", paragraphs=[]):
+	def __init__(self, title=None, paragraphs=[]):
 		self.title 		= title
 		self.paragraphs = paragraphs
 	
 	def __repr__(self):
-		return "<Block {}".format(self.title)
+		return "<Block title:{} paragraphs:{}>".format(self.title, self.paragraphs)

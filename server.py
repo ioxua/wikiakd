@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from controllers import *
 
 app = Flask(__name__, template_folder='views')
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 
 app.config.from_object('config')
 

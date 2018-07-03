@@ -17,8 +17,10 @@ blocks = [
 	ArticleBlock(title="Referências", paragraphs=[lorem]),
 ]
 db_articles = [
-	Article(1, title="Análise semiótica da falácia dos políticos envolvidos diariamente com a congruência de ideias neo-apologistas", subtitle="Uma análise baseada nos estudos de João Almeida et al", blocks=blocks),
-	Article(2, title="Os efeitos da procrastinação na auto-estima", subtitle="Uma discussão baseada em fatos", blocks=blocks),
+	Article(1, title="Análise semiótica da falácia dos políticos envolvidos diariamente com a congruência de ideias neo-apologistas", subtitle="Uma análise baseada nos estudos de João Almeida et al", blocks=blocks, author="Yehoshua Oliveira", leader="Elias Ribeiro"),
+	Article(2, title="Os efeitos da procrastinação na auto-estima de adolescentes", subtitle="Uma discussão baseada em fatos", blocks=blocks, author="Lucas Batista", leader="Elias Ribeiro"),
+	Article(3, title="Vantagens e desvantagens do pré-processador HTML Pug", subtitle="Um estudo de caso no mercado de trabalho", author="Verônica Frota", leader="Leandro Luque", blocks=blocks),
+	Article(4, title="Utilização de drones para o agronegócio", subtitle="", author="Francisco Almeida", leader="Elias Ribeiro", blocks=blocks)
 ]
 global article_max_id
 article_max_id = 2
@@ -102,16 +104,22 @@ def create_article():
 		attrs = 0
 		try:
 			attrs = block['attributes']
-			if attrs['header'] == 1:
+			if attrs['header'] == 1 or attrs['header'] == 2:
 				temp = current_block.paragraphs.pop()
-				current_block.title = temp
-				digested_blocks.append(current_block)
-				current_block = ArticleBlock()
+				if current_block.title is None:
+					current_block.title = temp
+				else:
+					digested_blocks.append(current_block)
+					current_block = ArticleBlock()
+					current_block.paragraphs = [] # is this really needed?
+					current_block.title = temp
 		except KeyError:
 			pass
 		content = block['insert'].split("\n")
+		content = list( filter(lambda x: x is not '', content) )
 		current_block.paragraphs.extend(content)
-	print(digested_blocks)
+
+	digested_blocks.append(current_block)
 	article.blocks = digested_blocks
 	db_articles.append(article)
 	return redirect('/profile')

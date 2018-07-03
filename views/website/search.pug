@@ -2,6 +2,7 @@ extend _template
 
 append stylesheets
 	link(rel="stylesheet", href="/static/css/articles.sass.css")
+	link(rel="stylesheet", href="/static/css/footer.sass.css")
 
 block content
 	#wrapper	
@@ -26,7 +27,9 @@ block content
 								.content
 									a.header(href="/article/#{article.id}")=article.title
 									.description=article.content
-
+									.extra Por #{article.author} &mdash; 
+										|publicado em #{article.publishDate.strftime('%d/%m/%Y')}
+			//include components/footer.pug
 
 block scripts
 	// Resetting jQuery
