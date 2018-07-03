@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, abort, session
+import json
+from flask import Blueprint, render_template, request, abort, session, redirect
 from model import Error, User
 from views import LoginForm
 from models import *
@@ -19,6 +20,8 @@ db_articles = [
 	Article(1, title="Análise semiótica da falácia dos políticos envolvidos diariamente com a congruência de ideias neo-apologistas", subtitle="Uma análise baseada nos estudos de João Almeida et al", blocks=blocks),
 	Article(2, title="Os efeitos da procrastinação na auto-estima", subtitle="Uma discussão baseada em fatos", blocks=blocks),
 ]
+global article_max_id
+article_max_id = 2
 
 @website_controller.route('/', methods=['GET'])
 @website_controller.route('/index', methods=['GET'])
@@ -80,3 +83,38 @@ def search_function(query):
 @website_controller.route('/newArticle', methods=['GET'])
 def add_article():
 	return render_template('website/addArticle.pug')
+
+@website_controller.route('/article', methods=['POST'])
+def create_article():
+	global article_max_id
+	article_max_id = article_max_id + 1
+	article = Article(
+		id=article_max_id,
+		title=request.form['title'],
+		subtitle=request.form['subtitle'],
+		leader=request.form['leader'],
+		author=request.form['author'],
+	)
+	blocks = json.loads(request.form['content'])['ops']
+	digested_blocks = []
+	current_block = ArticleBlock()
+
+	for block in blocks:
+		print(block)
+		try:
+			content = block['insert'].split("\n")
+			print(content)
+			current_block.paragraphs.extend(content)
+			attrs = block['attributes']
+			if attrs['header'] == 1:
+				temp = current_block.paragraphs.pop()
+				print("HEADER", temp)
+				current_block.title = temp
+				digested_blocks.append(temp)
+				current_block = ArticleBlock()
+		except KeyError:
+			pass
+	print(digested_blocks)
+	return redirect('/profile')
+
+	

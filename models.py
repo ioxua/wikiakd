@@ -19,6 +19,6 @@ class Article:
 		return has
 
 class ArticleBlock:
-	def __init__(self, title, paragraphs):
+	def __init__(self, title="", paragraphs=[]):
 		self.title 		= title
 		self.paragraphs = paragraphs

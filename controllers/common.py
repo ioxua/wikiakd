@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, request, abort, redirect
 from model import Error, User
 from views import LoginForm
+from .website import db_articles
 
 common_controller = Blueprint('common_controller', __name__)
 
 @common_controller.route('/profile', methods=['GET'])
 def profile():
-	return render_template('commons/profile.pug')
+	return render_template('commons/profile.pug', articles=db_articles)
 
 @common_controller.route('/login', methods=['GET', 'POST'])
 def login():
