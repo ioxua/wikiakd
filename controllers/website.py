@@ -95,26 +95,25 @@ def create_article():
 		leader=request.form['leader'],
 		author=request.form['author'],
 	)
-	blocks = json.loads(request.form['content'])['ops']
+	article_blocks = json.loads(request.form['content'])['ops']
 	digested_blocks = []
 	current_block = ArticleBlock()
-
-	for block in blocks:
-		print(block)
+	for block in article_blocks:
+		attrs = 0
 		try:
-			content = block['insert'].split("\n")
-			print(content)
-			current_block.paragraphs.extend(content)
 			attrs = block['attributes']
 			if attrs['header'] == 1:
 				temp = current_block.paragraphs.pop()
-				print("HEADER", temp)
 				current_block.title = temp
-				digested_blocks.append(temp)
+				digested_blocks.append(current_block)
 				current_block = ArticleBlock()
 		except KeyError:
 			pass
+		content = block['insert'].split("\n")
+		current_block.paragraphs.extend(content)
 	print(digested_blocks)
+	article.blocks = digested_blocks
+	db_articles.append(article)
 	return redirect('/profile')
 
 	

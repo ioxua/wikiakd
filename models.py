@@ -22,3 +22,6 @@ class ArticleBlock:
 	def __init__(self, title="", paragraphs=[]):
 		self.title 		= title
 		self.paragraphs = paragraphs
+	
+	def __repr__(self):
+		return "<Block {}".format(self.title)
